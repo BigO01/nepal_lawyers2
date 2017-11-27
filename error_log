@@ -1,0 +1,24 @@
+[13-Nov-2017 09:28:37 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/91f1cb6568279881e7e4dc5bda2135353878c9dc.php on line 548
+[13-Nov-2017 13:56:22 UTC] PHP Fatal error:  Call to undefined method stdClass::count() in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/e38d127804d925931b963c6375c7f1aa4ab5a7bc.php on line 184
+[13-Nov-2017 13:57:37 UTC] PHP Fatal error:  Call to undefined method stdClass::count() in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/e38d127804d925931b963c6375c7f1aa4ab5a7bc.php on line 182
+[13-Nov-2017 14:29:49 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/e38d127804d925931b963c6375c7f1aa4ab5a7bc.php on line 281
+[13-Nov-2017 14:38:53 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/e38d127804d925931b963c6375c7f1aa4ab5a7bc.php on line 269
+[13-Nov-2017 15:42:09 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/e38d127804d925931b963c6375c7f1aa4ab5a7bc.php on line 252
+[14-Nov-2017 07:52:01 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/25ad560fd65447294ac29c74de09b024ac00d8b5.php on line 434
+[14-Nov-2017 11:34:44 UTC] PHP Fatal error:  Class 'App\Http\Controllers\nep_ratings_comments' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/Adminiscontroller.php on line 535
+[14-Nov-2017 12:18:14 UTC] PHP Parse error:  syntax error, unexpected 'elseif' (T_ELSEIF) in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/91f1cb6568279881e7e4dc5bda2135353878c9dc.php on line 235
+[14-Nov-2017 12:20:33 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Adminiscontroller' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/UserController.php on line 169
+[14-Nov-2017 12:38:55 UTC] PHP Fatal error:  Call to undefined function App\Http\Controllers\leftjoin() in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/Adminiscontroller.php on line 549
+[14-Nov-2017 13:12:16 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\AdminisController::UpdateAccountApprove() in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/Adminiscontroller.php on line 557
+[15-Nov-2017 16:17:30 UTC] PHP Fatal error:  Class 'App\nep_emails' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/EmailController.php on line 50
+[16-Nov-2017 08:12:05 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/nepallawyer/sol.nepallawyer.com/routes/web.php on line 425
+[16-Nov-2017 08:12:54 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/nepallawyer/sol.nepallawyer.com/routes/web.php on line 420
+[16-Nov-2017 12:05:41 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/nepallawyer/sol.nepallawyer.com/routes/web.php on line 413
+[16-Nov-2017 13:57:14 UTC] PHP Parse error:  syntax error, unexpected '!=' (T_IS_NOT_EQUAL) in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/91f1cb6568279881e7e4dc5bda2135353878c9dc.php on line 402
+[16-Nov-2017 13:57:49 UTC] PHP Parse error:  syntax error, unexpected '!=' (T_IS_NOT_EQUAL) in /home/nepallawyer/sol.nepallawyer.com/storage/framework/views/91f1cb6568279881e7e4dc5bda2135353878c9dc.php on line 402
+[16-Nov-2017 20:45:19 UTC] PHP Fatal error:  Class 'App\nep_emails' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/EmailController.php on line 50
+[16-Nov-2017 20:45:50 UTC] PHP Fatal error:  Class 'App\nep_emails' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/EmailController.php on line 50
+[17-Nov-2017 09:44:59 UTC] PHP Fatal error:  Class 'App\nep_emails' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/EmailController.php on line 50
+[17-Nov-2017 11:59:54 UTC] PHP Fatal error:  Class 'App\nep_emails' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/EmailController.php on line 50
+[20-Nov-2017 14:38:28 UTC] PHP Fatal error:  Class 'App\nep_emails' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/EmailController.php on line 50
+[20-Nov-2017 14:39:32 UTC] PHP Fatal error:  Class 'App\nep_emails' not found in /home/nepallawyer/sol.nepallawyer.com/app/Http/Controllers/EmailController.php on line 50

@@ -1,0 +1,33 @@
+.cmt{
+	margin-top:13px !important;	
+	}
+legend.clegend{
+	display:inline-block;
+	width:auto;
+	}
+.row{
+	margin-bottom:5px;
+	}
+#sampleTable_length{ display:inline !important;}
+#sampleTable_filter{ display:inline !important; float:right !important;}
+#sampleTable_info { display:inline !important; float: right !important; margin-top: 2px !important; padding-top: 0px !important;}
+#sampleTable_paginate{ display:inline !important;}
+.paginate_button{
+	
+	/*position:relative;*/
+	cursor: pointer;
+	display: inline !important;
+	/*float: right !important;*/
+	padding: 0 15px;
+	line-height: 1.428571429;
+	text-decoration: none;
+	color: #673AB7;
+	background-color: #fff;
+	border: 1px solid #ddd;
+		border-top-color: rgb(221, 221, 221);
+		border-right-color: rgb(221, 221, 221);
+		border-bottom-color: rgb(221, 221, 221);
+		border-left-color: rgb(221, 221, 221);
+	margin-left: -1px;
+	}
+.btn{ margin-bottom:5px;}
