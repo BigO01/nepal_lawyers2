@@ -44,11 +44,11 @@
         <div class="center mb-20">
                     <div class="row">
                         <div class="form-group">
-                            <div class="col-md-2 col-md-offset-5">
+                            <div class="col-md-2 col-md-offset-5" id="img_div">
                                 <div class="main-img-preview"> 
                                   <input type="hidden" name="img" value="{{ $input['img'] or old('img') }}" >
                                   <img class="thumbnail img-preview" src="{{ $input['img'] or URL::to('/public/images/dummy.png') }}" alt="Preview" title="Preview">
-                                  <?php echo $errors->first('new_img', "<li style='color:red'>:message</li>") ?> 
+                                  <span class='help-block' id="img_help"><strong></strong></span>
                                 </div>
                             </div>
                         </div>
@@ -72,27 +72,27 @@
         </div>
         
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="first_name_div">
                     <div class="form-group">
                       <label for="first_name">Name <small style="color:red;">*</small></label>
                       <input id="first_name" name="first_name" type="text" placeholder="Enter Your Name" value="{{ $input['fname'] or old('first_name') }}" required="" class="form-control">
-                      <?php echo $errors->first('first_name', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="first_name_help"><strong></strong></span>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="license_div">
                     <div class="form-group">
                       <label for="license">License Number <small style="color:red;">*</small></label>
                       <input id="license" name="license" class="form-control required" type="text" placeholder="Enter Your License Number" required="required" value="{{ old('license') }}">
-                      <?php echo $errors->first('license', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="license_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
         <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" id="mobile_div">
                     <div class="form-group">
                       <label for="mobile">Mobile Number <small style="color:red;">*</small></label>
                       <input id="mobile" name="mobile" type="number" placeholder="Mobile # +977 X XXXX XXX" required="required" class="form-control" value="{{ old('mobile') }}">
-                      <?php echo $errors->first('mobile', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="mobile_help"><strong></strong></span>
                     </div>
                   </div>
                   <div class="col-sm-4">
@@ -109,16 +109,16 @@
                   </div>
                 </div>
         <div class="row">
-                  <div class="col-sm-12">
+                  <div class="col-sm-12" id="address_div">
                     <div class="form-group">
                       <label for="address">Address<small style="color:red;">*</small></label>
                       <input id="address" name="address" class="form-control" type="text" required="required" placeholder="Enter Your Address" value="{{ old('address') }}">
-                      <?php echo $errors->first('address', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="address_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
                 <div class="row">               
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="state_div">
                     <div class="form-group">
                       <label for="state">District <small style="color:red;">*</small></label>
                       <select id="state" name="state" class="form-control required" required="required" onchange="cities(this);">
@@ -127,21 +127,21 @@
                           <option {{ old('state') == $state->id ? 'selected' : '' }} value="{{ $state->id }}">{{ $state->state_name }}</option>
                       @endforeach 
                       </select>
-                       <?php echo $errors->first('state', "<li style='color:red'>:message</li>") ?>
+                       <span class='help-block' id="state_help"><strong></strong></span>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="city_div">
                     <div class="form-group">
                       <label for="city">City <small style="color:red;">*</small></label>
                       <select id="city" name="city" id="city" class="form-control required" required="required">
         
                       </select>
-                      <?php echo $errors->first('city', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="city_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
                 <div class="row">               
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="gender_div">
                     <div class="form-group">
                       <label for="gender">Gender <small style="color:red;">*</small></label>
                       <select id="gender" name="gender" class="form-control required" required="required">
@@ -149,10 +149,10 @@
                         <option value="1">Male</option>
                         <option value="0">Female</option>    
                       </select>
-                      <?php echo $errors->first('gender', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="gender_help"><strong></strong></span>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="status_div">
                     <div class="form-group">
                       <label for="status">Marital Status <small style="color:red;">*</small></label>
                       <select id="status" name="status" class="form-control required" required="required">
@@ -161,16 +161,16 @@
                         <option {{ old('status') == 2 ? 'selected' : '' }} value="2">Married</option>
                         <option {{ old('status') == 1 ? 'selected' : '' }} value="1">Divorced</option>            
                       </select>
-                      <?php echo $errors->first('status', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="status_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
                 <div class="row">               
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="dob_div">
                     <div class="form-group">
                       <label for="dob">Date Of Birth <small style="color:red;">*</small></label>
                       <input id="dob" class="form-control input-lg" name="dob" type="text"  placeholder="Date of Birth *" required="required" value="{{ old('dob') }}" />
-                       <?php echo $errors->first('dob', "<li style='color:red'>:message</li>") ?>
+                       <span class='help-block' id="dob_help"><strong></strong></span>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -229,6 +229,7 @@
 
 
         $(document).ready(function() {
+        $('#lawyerForm').attr('novalidate','novalidate');
     var brand = document.getElementById('logo-id');
     brand.className = 'attachment_upload';
     brand.onchange = function() {
@@ -249,6 +250,43 @@
     $("#logo-id").change(function() {
         readURL(this);
     });
+
+            $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+            });
+            // process registration form the form
+                $('#lawyerForm').submit(function(event) {
+                    event.preventDefault();
+                    $('.has-error').removeClass('has-error');
+                                    $('.help-block').html('');
+                    // process the form
+                            $.ajax({
+                                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                                url         : "{{url('/lawyer')}}", // the url where we want to POST
+                                data        : $("#lawyerForm").serialize(),
+                                dataType    : 'json', // what type of data do we expect back from the server
+                                encode      : true,
+            //                    contentType: "application/json",
+                                success : function(data){
+                                    toastr.success(data.message, 'Success!');
+                                    var APP_URL = "{{ url('/') }}";
+                                setTimeout(function() {
+                                    window.location.replace(data.redirect);
+                                }, 500);
+                                },
+                                error : function(data){
+                                var errors = $.parseJSON(data.responseText);
+                                $.each(errors,function(index, value) {
+                                    toastr.error(value, 'Error!');
+                                    $('#'+index+'_help').html("<strong>"+value+"</strong>");
+                                    $('#'+index+'_div').addClass('has-error');
+                                });
+                                }
+                            });
+                });
+
 });
 
     </script>  

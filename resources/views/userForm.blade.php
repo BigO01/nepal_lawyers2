@@ -55,54 +55,54 @@
                 </div>
               
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="first_name_div">
                     <div class="form-group">
                       <label for="first_name">First Name <small style="color:red;">*</small></label>
                       <input id="first_name" name="first_name" type="text" placeholder="Enter First Name" required="" class="form-control" value="{{ $input['fname'] or old('first_name') }}">
+                        <span class='help-block' id="first_name_help"><strong></strong></span>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="last_name_div">
                     <div class="form-group">
                       <label for="last_name">Last Name <small style="color:blue;"> (optional)</small></label>
                       <input id="last_name" name="last_name" type="text" placeholder="Enter Last Name" class="form-control" value="{{ $input['lname'] or old('last_name') }}">
-                      <?php echo $errors->first('last_name', "<li style='color:red'>:message</li>") ?>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" id="mobile_div">
                     <div class="form-group">
                       <label for="mobile">Mobile Number <small style="color:red;">*</small></label>
                       <input id="mobile" name="mobile" type="text" placeholder="Mobile # +977 X XXXX XXX" required="" class="form-control required" value="{{ old('mobile') }}">
-                      <?php echo $errors->first('mobile', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="mobile_help"><strong></strong></span>
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" id="officepn_id">
                     <div class="form-group">
                       <label for="officepn">Office Number<small style="color:blue;"> (optional)</small></label>
                       <input id="officepn" name="officepn" class="form-control" type="text" placeholder="Office Phone # +977 XXX XXXX XXX" value="{{ old('officepn') }}">
-                      <?php echo $errors->first('officepn', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="officepn_help"><strong></strong></span>
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" id="homepn_div">
                     <div class="form-group">
                       <label for="homepn">Home Number<small style="color:blue;"> (optional)</small></label>
                       <input id="homepn" name="homepn" class="form-control " type="text" placeholder="Home Phone # +977 XXX XXXX XXX" value="{{ old('homepn') }}">
-                       <?php echo $errors->first('homepn', "<li style='color:red'>:message</li>") ?>
+                       <span class='help-block' id="homepn_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-12">
+                  <div class="col-sm-12" id="address_div">
                     <div class="form-group">
-                      <label for="address">Address<small style="color:blue;"> (optional)</small></label>
+                      <label for="address">Address <small style="color:red;">*</small></label>
                       <input id="address" name="address" class="form-control" type="text" placeholder="Enter Your Address" value="{{ old('address') }}">
-                      <?php echo $errors->first('address', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="address_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
                 <div class="row">               
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="state_div">
                     <div class="form-group">
                       <label for="state">District <small style="color:red;">*</small></label>
                       <select id="state" name="state" class="form-control required" onchange="cities(this);">
@@ -111,20 +111,20 @@
                         <option {{ old('state') == $state->id ? 'selected' : '' }} value="{{ $state->id }}">{{ $state->state_name }}</option>
                     @endforeach
                       </select>
-                      <?php echo $errors->first('state', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="state_help"><strong></strong></span>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="city_div">
                     <div class="form-group">
                       <label for="city">City <small style="color:red;">*</small></label>
                       <select id="city" name="city" id="city" class="form-control required">
                       </select>
-                      <?php echo $errors->first('city', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="city_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
                 <div class="row">               
-                  <div class="col-sm-12">
+                  <div class="col-sm-12" id="gender_div">
                     <div class="form-group">
                       <label for="gender">Gender <small style="color:red;">*</small></label>
                       <select id="gender" name="gender" class="form-control required">
@@ -132,7 +132,7 @@
                         <option value="1">Male</option>
                         <option value="0">Female</option>    
                       </select>
-                      <?php echo $errors->first('gender', "<li style='color:red'>:message</li>") ?>
+                      <span class='help-block' id="gender_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
@@ -148,7 +148,7 @@
                 
             {!! Form::close() !!}
 <script>
-$("#memberForm").validate();
+//$("#memberForm").validate();
 </script> 
               
             </div>
@@ -168,6 +168,7 @@ $("#memberForm").validate();
 
 
         $(document).ready(function() {
+        $('#memberForm').attr('novalidate','novalidate');
     var brand = document.getElementById('logo-id');
     brand.className = 'attachment_upload';
     brand.onchange = function() {
@@ -190,6 +191,41 @@ $("#memberForm").validate();
     });
 });
 
+$.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+            });
+            // process registration form the form
+                $('#memberForm').submit(function(event) {
+                    event.preventDefault();
+                    $('.has-error').removeClass('has-error');
+                                    $('.help-block').html('');
+                    // process the form
+                            $.ajax({
+                                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                                url         : "{{url('/member')}}", // the url where we want to POST
+                                data        : $("#memberForm").serialize(),
+                                dataType    : 'json', // what type of data do we expect back from the server
+                                encode      : true,
+            //                    contentType: "application/json",
+                                success : function(data){
+                                    toastr.success(data.message, 'Success!');
+                                    var APP_URL = "{{ url('/') }}";
+                                setTimeout(function() {
+                                    window.location.replace(data.redirect);
+                                }, 500);
+                                },
+                                error : function(data){
+                                var errors = $.parseJSON(data.responseText);
+                                $.each(errors,function(index, value) {
+                                    toastr.error(value, 'Error!');
+                                    $('#'+index+'_help').html("<strong>"+value+"</strong>");
+                                    $('#'+index+'_div').addClass('has-error');
+                                });
+                                }
+                            });
+                });
     </script>  
     <script src="{{ URL::to('public/new/js/ajax.js') }}" ></script>    
 @endpush

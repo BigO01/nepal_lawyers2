@@ -295,7 +295,7 @@ class RegisterController extends Controller
         // If user is MEMBER
         if($input['register'] == 'guest'){
           session()->put('data', $input);
-          return redirect()->route('member_form');
+          return response()->json(['status'=>'success','redirect'=>'member_form','message'=>'Registered Successfully!']);
 
         }// End if
 
@@ -303,14 +303,14 @@ class RegisterController extends Controller
         elseif($input['register'] == 'lawyer')
         {
             session()->put('data', $input);
-            return redirect()->route('lawyer_form');
+            return response()->json(['status'=>'success','redirect'=>'lawyer_form','message'=>'Registered Successfully!']);
         }
 
         // If user is LAWFIRM
         else
         {
           session()->put('data', $input);
-           return redirect()->route('lawfirm_form');
+            return response()->json(['status'=>'success','redirect'=>'lawfirm_form','message'=>'Registered Successfully!']);
         }
 
       }// else close  
@@ -356,7 +356,6 @@ class RegisterController extends Controller
       $firm_name = DB::table('users')->select()->where('role','lawfirm')->where('status','1')->get();
       // $languages = DB::table('languages')->select()->where('status','1')->get();
       // $expertises = DB::table('expertises')->select()->where('status','1')->get();
-
       return view('lawyerform', compact('input','states','firm_id','firm_name','web_info','expertises','usersName','cities' ));
     }
 
@@ -426,8 +425,7 @@ class RegisterController extends Controller
 
       // User Login when register
       \Auth::loginUsingId($input['id']);
-      return redirect()->route('home')->with('msg', 'You Have Successfully Registerd!!!');
-
+        return response()->json(['status'=>'success','redirect'=>'home','message'=>'You Have Successfully Registerd!']);
       }
 
 
@@ -436,7 +434,6 @@ class RegisterController extends Controller
 
     // Lawyer Register in LAWYER table
     public function lawyer(lawyer $request){
-
       session()->forget('data');
       $input = $request->all();
 
@@ -627,8 +624,7 @@ $image->save(public_path('clientphotos/watermark'.$imgName));
             'status'    =>  'pending',
           ]);
           $noti->save();
-
-      return redirect()->route('home')->with('msg', 'You have successfully registerd, Now please complete your profile in setting section!');
+        return response()->json(['status'=>'success','redirect'=>'home','message'=>'You have successfully registerd, Now please complete your profile in setting section!']);
 
       }// End function lawyers
 
@@ -810,9 +806,7 @@ $image->save(public_path('clientphotos/watermark'.$imgName));
             'status'    =>  'pending',
           ]);
           $noti->save();
-
-      return redirect()->route('home')->with('msg', 'You have successfully registerd, Now please complete your profile in setting section!');
-     
+        return response()->json(['status'=>'success','redirect'=>'home','message'=>'You have successfully registerd, Now please complete your profile in setting section!']);
     }// End function lawfirm
    
 

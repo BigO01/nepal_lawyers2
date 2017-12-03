@@ -1012,3 +1012,10 @@ Route::post('Adminiscontroller/edit_lawyer/admingetstate', function(){
 });
 //Admin Routes End
 
+
+Route::get('test_route',function(){
+    $ee = \Illuminate\Support\Facades\Crypt::encrypt('m.mubasharsheikh@gmail.com');
+    $fe = \Illuminate\Support\Facades\Crypt::encrypt('Mubashar');
+    $le = \Illuminate\Support\Facades\Crypt::encrypt('Jamshad');
+    echo URL::to('/signup/'.$ee.'/'.$fe.'/'.$le);
+});

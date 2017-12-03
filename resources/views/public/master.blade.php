@@ -69,9 +69,14 @@
 
 <link href="{{ URL::to('public/new/css/responsive.css') }}" rel="stylesheet" type="text/css">
 
+<!-- CSS | toastr css. . -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
 <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
 
 <link href="{{ URL::to('public/new/css/style.css') }}" rel="stylesheet" type="text/css">
+
 
 <!-- external javascripts -->
 
@@ -793,6 +798,7 @@ function googleTranslateElementInit() {
 
 <!-- Footer Scripts -->
 <!-- JS | Custom script for all pages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="{{ URL::to('public/new/js/custom.js') }}"></script>
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">

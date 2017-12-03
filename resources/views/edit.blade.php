@@ -591,7 +591,7 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow sp
           </div>
           </div>
       @endif
-                  <!-- Personal Information Form For Lawfirm -->
+                  <!-- Personal Information Form For lawyer -->
          
       @if( Auth::user()->role == 'lawyer') 
          <div class="tab-pane fade" id="personal_lawyer">

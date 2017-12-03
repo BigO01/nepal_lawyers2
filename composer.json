@@ -14,7 +14,8 @@
         "laravel/tinker": "~1.0",
         "musonza/chat": "^2.0",
         "skovmand/mailchimp-laravel": "^1.0",
-        "zizaco/entrust": "5.2.x-dev"
+        "zizaco/entrust": "5.2.x-dev",
+        "lrgt/laravel-form-ajax-validation": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

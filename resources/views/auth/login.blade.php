@@ -51,25 +51,17 @@
             <form name="login-form" id="loginForm" method="POST" class="clearfix" action="{{ route('login') }}">
                   {{ csrf_field() }}
               <div class="row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12" id="email_div">
                   <label for="useremail">Email Address</label>
                   <input id="useremail" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-                  @if ($errors->has('email'))
-                      <span class="help-block">
-                          <strong style="color:red">{{ $errors->first('email') }}</strong>
-                      </span>
-                  @endif
+                    <span class='help-block' id="email_help"><strong></strong></span>
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12" id="password_div">
                   <label for="userpassword">Password</label>
                   <input id="userpassword" type="password" class="form-control" name="password" required>
-                  @if ($errors->has('password'))
-                      <span class="help-block">
-                          <strong style="color:red">{{ $errors->first('password') }}</strong>
-                      </span>
-                  @endif
+                        <span class='help-block' id="password_help"><strong></strong></span>
                 </div>
               </div>
               <?php //print_r($errors); ?>
@@ -97,7 +89,7 @@
               </div>
             </form>
 <script>
-$("#loginForm").validate();
+//$("#loginForm").validate();
 </script>
           </div>
 
@@ -113,26 +105,22 @@ $("#loginForm").validate();
               <hr>
               <p class="text-gray">Give Your Name And Email for Registration OR Register With Your Facebook/Google Account.</p>
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" id="f_name_div">
                   <label for="cfname">First Name</label>
                 {!! Form::text('f_name',  '',['id'=>'cfname','placeholder'=>'First Name','data'=>'required','class'=>'form-control','required'=>'required','minlength'=>'4']) !!}
-                <?php echo $errors->first('f_name', "<li style='color:red'>:message</li>") ?>
+                <span class='help-block' id="f_name_help"><strong></strong></span>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" id="l_name_div">
                   <label for="clname">Last Name</label>
                     {!! Form::text('l_name', '',['id'=>'clname', 'placeholder'=>'Last Name','class' => 'form-control','data'=>'required','required'=>'required','minlength'=>'4']) !!}
-                    <?php echo $errors->first('l_name', "<li style='color:red'>:message</li>") ?> 
+                    <span class='help-block' id="l_name_help"><strong></strong></span>
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12" id="email_l_div">
                   <label for="cemail">Email</label>
                   <input type="email" id="cemail" name="email_l" class="form-control" placeholder="Email" required="required" value="{{ old('email_l') }}" >
-                    @if ($errors->has('email_l'))
-                        <span class="help-block">
-                            <strong style="color:red">{{ $errors->first('email_l') }}</strong>
-                        </span>
-                    @endif
+                    <span class='help-block' id="email_l_help"><strong></strong></span>
                 </div>
               </div>
               <div class="form-group col-md-6 col-md-offset-3">
@@ -150,16 +138,6 @@ $("#loginForm").validate();
                 </div>
               </div>
             {!! Form::close() !!}
-<script>
-//$("#registerForm").validate();
-$("#registerForm").onsubmit(function(e){
-        e.preventDefault();
-        //var val = obj.value;
-        //$.post('getcity', {state_id : val} ,function(city){
-        //    $("#city").html(city);
-        //}).success();
-    });
-</script>
           </div>
 
         </div><!-- end row  -->
@@ -170,5 +148,81 @@ $("#registerForm").onsubmit(function(e){
 {{-- Main contant ends --}}
 
 @stop
+
+@push('js')
+<script>
+//$("#registerForm").validate();
+$(document).ready(function() {
+$('#registerForm').attr('novalidate','novalidate');
+$('#loginForm').attr('novalidate','novalidate');
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+});
+    // process registration form the form
+    $('#registerForm').submit(function(event) {
+        event.preventDefault();
+        $('.has-error').removeClass('has-error');
+                        $('.help-block').html('');
+        // process the form
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : 'send', // the url where we want to POST
+                    data        : $("#registerForm").serialize(),
+                    dataType    : 'json', // what type of data do we expect back from the server
+                    encode      : true,
+//                    contentType: "application/json",
+                    success : function(data){
+                        toastr.success(data.message, 'Success!');
+                        $('#registerForm').find("input[type=text], input[type=email]").val("");
+                    },
+                    error : function(data){
+                    var errors = $.parseJSON(data.responseText);
+                    $.each(errors,function(index, value) {
+                        toastr.error(value, 'Error!');
+                        $('#'+index+'_help').html("<strong>"+value+"</strong>");
+                        $('#'+index+'_div').addClass('has-error');
+                    });
+                    }
+                });
+    });
+
+// process login form the form
+    $('#loginForm').submit(function(event) {
+        event.preventDefault();
+        $('.has-error').removeClass('has-error');
+                        $('.help-block').html('');
+        // process the form
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : 'login', // the url where we want to POST
+                    data        : $("#loginForm").serialize(),
+                    dataType    : 'json', // what type of data do we expect back from the server
+                    encode      : true,
+//                    contentType: "application/json",
+                    success : function(data){
+//                        toastr.success(data.message, 'Success!');
+//                        $('#registerForm').find("input[type=text], input[type=email]").val("");
+                    toastr.success(data.message, 'Success!');
+                            setTimeout(function() {
+                                window.location.replace(data.redirect);
+                            }, 500);
+                    },
+                    error : function(data){
+                    var errors = $.parseJSON(data.responseText);
+                    $.each(errors,function(index, value) {
+                        toastr.error(value, 'Error!');
+                        $('#'+index+'_help').html("<strong>"+value+"</strong>");
+                        $('#'+index+'_div').addClass('has-error');
+                    });
+                    }
+                });
+    });
+});
+
+
+</script>
+@endpush
 
 

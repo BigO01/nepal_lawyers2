@@ -98,7 +98,7 @@
 {{-- Hidden fields ends here --}}
               
                 <div class="row mt-30">
-                  <div class="col-sm-12">
+                  <div class="col-sm-12" id="region_div">
                     <div class="form-group">
                       <label for="region"> Select Province <small style="color:red;">*</small></label>
                       <select id="region" name="region" class="form-control required" required="required">
@@ -108,28 +108,29 @@
             @endforeach 
                       </select>
                     </div>
+                    <span class='help-block' id="region_help"><strong></strong></span>
                   </div>
                 </div>
    
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="password_div">
                     <div class="form-group">
                       <label for="password">Password <small style="color:red;">*</small></label>
                       <input id="password" name="password" type="password" placeholder="Password" required="required" class="form-control">
-                      <?php echo $errors->first('password', "<li style='color:red'>:message</li>") ?> 
+                       <span class='help-block' id="password_help"><strong></strong></span>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" id="password_confirmation_div">
                     <div class="form-group">
                       <label for="password_confirmation">Re-enter Password <small style="color:red;">*</small></label>
                       <input id="password_confirmation" class="form-control input-lg" name="password_confirmation" type="Password" placeholder="Re-enter Password" required="required" />
-                      <?php echo $errors->first('password_confirmation', "<li style='color:red'>:message</li>") ?> 
+                      <span class='help-block' id="password_confirmation_help"><strong></strong></span>
                     </div>
                   </div>
                 </div>
              
                 <h3 class="text-center mt-20 mb-30">I want to</h3>
-                <?php echo $errors->first('register', "<li style='color:red'>:message</li>") ?> 
+                <span class='help-block' id="register_help" style="color: #a94442;"><strong></strong></span>
                 
 
                <div class="row">
@@ -180,12 +181,12 @@
 
                 <div class="row mt-20">
                         <div class="form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="checkBox_div">
                                 <div class="checkbox">
                                     <label for="check">
                                         <input id="check" class="checkbox" type="checkbox" name="checkBox" value="1" required="required" style="display:block;">I Accept the Nepal Lawyers <a href="#">  Terms of conditions </a> including the <a href="#"> Privacy Policy</a>
                                     </label>
-                                    <?php echo $errors->first('checkBox', "<li style='color:red'>:message</li>") ?>  
+                                    <span class='help-block' id="checkBox_help"><strong></strong></span>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +206,7 @@
               
               <!-- Job Form Validation-->
 <script type="text/javascript">   
-    $("#frmSignUp").validate();
+//    $("#frmSignUp").validate();
 </script>
             </div>
           </div>
@@ -217,3 +218,47 @@
 {{-- Main contant ends --}}
 
 @stop
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+        $('#frmSignUp').attr('novalidate','novalidate');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+        });
+        // process registration form the form
+            $('#frmSignUp').submit(function(event) {
+
+                event.preventDefault();
+                $('.has-error').removeClass('has-error');
+                                $('.help-block').html('');
+                // process the form
+                        $.ajax({
+                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : "{{url('/signup2')}}", // the url where we want to POST
+                            data        : $("#frmSignUp").serialize(),
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode      : true,
+        //                    contentType: "application/json",
+                            success : function(data){
+                                toastr.success(data.message, 'Success!');
+                                var APP_URL = "{{ url('/') }}";
+                            setTimeout(function() {
+                                window.location.replace(data.redirect);
+                            }, 500);
+                            },
+                            error : function(data){
+                            var errors = $.parseJSON(data.responseText);
+                            $.each(errors,function(index, value) {
+                                toastr.error(value, 'Error!');
+                                $('#'+index+'_help').html("<strong>"+value+"</strong>");
+                                $('#'+index+'_div').addClass('has-error');
+                            });
+                            }
+                        });
+            });
+        });
+    </script>
+@endpush

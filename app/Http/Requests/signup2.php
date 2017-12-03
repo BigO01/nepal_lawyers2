@@ -35,8 +35,8 @@ class signup2 extends FormRequest
     public function messages()
     {
         return [
-            'password.required' => 'This field :attribute should never be blank!',
-            'password_confirmation.required' => 'Please fill :attribute field!',
+            'password.required' => 'This field password should never be blank!',
+            'password_confirmation.required' => 'Please fill confirm password field!',
             'checkBox.required'   => 'Please accept Terms of conditions!',
             'register.required'   => 'Please select your Register Type!',
         ];

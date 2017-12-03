@@ -25,22 +25,27 @@ class professional extends FormRequest
     {
         return [
             'yoe'           => 'required',
-            'expertise.*'     => 'required',
-            'court.*'     => 'required',
-            'language.*'    =>  'required',
-            'service.*'       => 'required',
+            'expertise'     => 'required',
+//            'expertise.*'     => 'required',
+            'court'     => 'required',
+//            'court.*'     => 'required',
+            'language'    =>  'required',
+//            'language.*'    =>  'required',
+            'service'       => 'required',
+//            'service.*'       => 'required',
             'firstfee'      => 'required',
             'hourfee'       => 'required',
-            'payment.*'       => 'required',
+//            'payment.*'       => 'required',
+            'payment'       => 'required',
         ];
     }
 
         public function messages()
     {
         return [
-            'yoe.required'      => 'Please fill :attribute field!',
-            'firstfee.required' => 'Please fill :attribute field!',
-            'hourfee.required'  => 'Please fill :attribute field!',        
+            'yoe.required'      => 'Please fill year of experience field!',
+            'firstfee.required' => 'Please fill first fee field!',
+            'hourfee.required'  => 'Please fill hour fee field!',
         ];
     }
 }

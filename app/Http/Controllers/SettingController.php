@@ -107,7 +107,7 @@ class SettingController extends Controller
 		        break;
 		    case "lawfirm":
               $lawyer = DB::table('lawfirms')->select()->where('ref_id',$id)->first();
-		    		  return view('edit', compact('lawyer','state','city','regions','expertise','lawfirms_id','lawfirms_name','bars','courts','languages','certificates','photos','lawyer_edu','day_time','web_info','firm_lawyers','expertises','usersName','cities'));
+		    		  return view('edit1', compact('lawyer','state','city','regions','expertise','lawfirms_id','lawfirms_name','bars','courts','languages','certificates','photos','lawyer_edu','day_time','web_info','firm_lawyers','expertises','usersName','cities'));
 		        break;
 		    default:
 		}// Switch ends
@@ -196,10 +196,11 @@ class SettingController extends Controller
             $lawfirm->save(); 
           }// End elseif
           else{
-            return redirect()->route('setting')->with('msg', 'Your Can Not Update Your Data!');
+            return response()->json(['status'=>'error','message'=>'Your Can Not Update Your Data!']);
+//            return redirect()->route('setting')->with('msg', 'Your Can Not Update Your Data!');
           }
-
-          return redirect()->route('setting')->with('msg', 'Your data has been updated!!!');
+        return response()->json(['status'=>'success','message'=>'Your data has been updated!']);
+//          return redirect()->route('setting')->with('msg', 'Your data has been updated!!!');
     }// End professional information
 
 
@@ -264,7 +265,8 @@ class SettingController extends Controller
           ]);
         $lawyer->save();
       }
-      return redirect()->route('setting')->with('msg', 'Your data has been updated!!!');
+        return response()->json(['status'=>'success','message'=>'Personal Information Updated Successfully!']);
+//      return redirect()->route('setting')->with('msg', 'Your data has been updated!!!');
     }
 
 

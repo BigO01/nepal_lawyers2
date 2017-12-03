@@ -54,11 +54,11 @@ class lawfirm extends FormRequest
     {
         return [
 
-            'dor'       => 'Please select your firm registration date!',
+            'dor.required'       => 'Please select your firm registration date!',
             'new_img.mimes'     => 'The Image should be jpeg, jpg or png extentions!',
             'new_img.max'       => 'The Image should be less then 5mb size!',
             'first_name.required' => 'Firm Name Should never blank!',
-            'officepn.required'   => 'The :attribute should be Given!',
+            'officepn.required'   => 'The contact number should be Given!',
             'address.required'  => 'Please fill :attribute field!',
             'state.required'    => 'Please fill :attribute field!',
             'city.required'     => 'Please fill :attribute field!',            

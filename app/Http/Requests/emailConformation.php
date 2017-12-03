@@ -26,7 +26,7 @@ class emailConformation extends FormRequest
         return [
             'f_name' => 'required|alpha_spaces',
             'l_name' => 'required|alpha_spaces',
-            'email_l' => 'required|unique:users,email',
+            'email_l' => 'required|unique:users,email'
         ];
     }
 
@@ -34,7 +34,10 @@ class emailConformation extends FormRequest
     public function messages()
     {
         return [
-            'email_l.required'  =>  'Email Field Is Required!!!',
+            'email_l.required'  =>  'Email Field Is Required!',
+            'email_l.unique'  =>  'Email Is Already Registered!',
+            'l_name.required'  =>  'Last Name Field Is Required!',
+            'f_name.required'  =>  'First Name Field Is Required!'
         ];
     }
 }

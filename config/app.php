@@ -340,6 +340,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
 
+        Lrgt\LaravelFormAjaxValidation\LaravelFormAjaxValidationServiceProvider::class,
 
 
         /*

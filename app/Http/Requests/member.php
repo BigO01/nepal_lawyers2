@@ -26,6 +26,7 @@ class member extends FormRequest
         return [
             'new_img'  => 'mimes:jpeg,jpg,png|max:5000',
             'mobile' => 'required',
+            'first_name' => 'required',
             'address' => 'required',
             'state' => 'required',
             // 'district' => 'required',
@@ -39,13 +40,12 @@ class member extends FormRequest
         return [
             'new_img.mimes'     => 'The Image should be jpeg, jpg or png extentions!',
             'new_img.max'       => 'The Image should be less then 5mb size!',
-            'last_name'        =>  'The :attribute should be alpha!',
-            'mobile.required'   => 'The :attribute should be Given!',
-            'address.required' => 'Please fill :attribute field!',
-            'state.required' => 'Please fill :attribute field!',
-            'district.required' => 'Please fill :attribute field!',
-            'city.required' => 'Please fill :attribute field!',
-            'gender.required' => 'Please fill :attribute field!',
+            'mobile.required'   => 'The mobile number should be Given!',
+            'first_name.required'   => 'The first name should be Given!',
+            'address.required' => 'Please fill address field!',
+            'state.required' => 'Please fill state field!',
+            'city.required' => 'Please fill city field!',
+            'gender.required' => 'Please fill gender field!',
         ];
     }
 }

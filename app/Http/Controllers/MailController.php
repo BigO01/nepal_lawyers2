@@ -13,11 +13,11 @@ class MailController extends Controller
 {
     public function send_email_conformation()
     {
-    
     	Mail::send(new SendMail());
-    	session()->flash('feedback', 'Confirmation Email has been send to you! Please conform that first!');
-    	session()->flash('feedback_class','alert-success');
-    	return redirect()->route('login');
+        return response()->json(['status'=>'success','message'=>'Confirmation Email has been send to you! Please conform that first!']);
+//    	session()->flash('feedback', 'Confirmation Email has been send to you! Please conform that first!');
+//    	session()->flash('feedback_class','alert-success');
+//    	return redirect()->route('login');
     }
 
     public function contactus()

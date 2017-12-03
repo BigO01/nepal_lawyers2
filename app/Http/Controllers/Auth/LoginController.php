@@ -28,7 +28,11 @@ if ( $user->hasRole('admin') ) {// do your margic here
     return redirect()->route('Adminiscontroller');
 }
 
- return redirect('/home');
+    if($request->ajax()){
+        return response()->json(['status'=>'success','redirect'=>'home','message'=>'Successfully Logged In!']);
+    }else{
+        return redirect('/home');
+    }
 }
 
 ///////////////////////////////////////////////    
