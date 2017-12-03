@@ -90,6 +90,9 @@
 
 <script src="{{ URL::to('public/new/js/jquery-plugin-collection.js') }}"></script>
 
+<script src="{{ URL::to('public/new/js/jquery.form.min.js') }}"></script>
+
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -278,15 +278,14 @@ class SettingController extends Controller
         ]);
 
           $input = $request->all();
+        dd($input);
           // Save multipale images/gallery 
           if(!empty($input['photos'])){ 
             $photos = $input['photos'];
               $count = 1;
               foreach($photos as $img){
-
                 $imgName = time().$count++.'.'.$img->getClientOriginalExtension();
                 $img->move(public_path('clientphotos'),$imgName);
-
                 $photosModel = new nep_photos;
                 $photosModel->image_path = $imgName;
                 $photosModel->parent_id = $input['id'];
@@ -321,7 +320,7 @@ class SettingController extends Controller
             }// end foreach
           }// end if  
 
-      return redirect()->route('setting')->with('msg', 'Your data has been updated!!!');
+      return response()->json(['status'=>'success','message'=>'Your data has been updated!']);
     
     }// End function
 
