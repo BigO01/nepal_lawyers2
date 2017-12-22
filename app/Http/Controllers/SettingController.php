@@ -272,10 +272,26 @@ class SettingController extends Controller
 
     // Gallery Uploaded 
     public function gallery(Request $request){
-      
-        $this->validate($request, [  
-          'photos.*' => 'required|mimes:jpeg,jpg,png|max:5000',
-        ]);
+//      dd($request->all());
+//        $this->validate($request, [
+//          'photos.*' => 'required|mimes:jpeg,jpg,png|max:5000',
+//        ]);
+        dd(/*count(*/$request->all()/*)*/);
+
+
+//        $validator = Validator::make(
+//            $input_data, [
+//                'photos.*' => 'required|mimes:jpg,jpeg,png,bmp|max:20000'
+//            ],[
+//                'photos.*.required' => 'Please upload an image',
+//                'photos.*.mimes' => 'Only jpeg,png and bmp images are allowed',
+//                'photos.*.max' => 'Sorry! Maximum allowed size for an image is 20MB',
+//            ]
+//        );
+
+//        if ($validator->fails()) {
+//            return 'i am here';
+//        }
 
           $input = $request->all();
         dd($input);

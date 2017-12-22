@@ -29,7 +29,7 @@ if ( $user->hasRole('admin') ) {// do your margic here
 }
 
     if($request->ajax()){
-        return response()->json(['status'=>'success','redirect'=>'home','message'=>'Successfully Logged In!']);
+        return response()->json(['status'=>'success','redirect'=>'profile','message'=>'Successfully Logged In!']);
     }else{
         return redirect('/home');
     }

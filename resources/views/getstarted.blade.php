@@ -246,7 +246,7 @@
                                 toastr.success(data.message, 'Success!');
                                 var APP_URL = "{{ url('/') }}";
                             setTimeout(function() {
-                                window.location.replace(data.redirect);
+                                window.location.href = data.redirect;
                             }, 500);
                             },
                             error : function(data){

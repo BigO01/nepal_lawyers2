@@ -295,7 +295,7 @@ class RegisterController extends Controller
         // If user is MEMBER
         if($input['register'] == 'guest'){
           session()->put('data', $input);
-          return response()->json(['status'=>'success','redirect'=>'member_form','message'=>'Registered Successfully!']);
+          return response()->json(['status'=>'success','redirect'=>url('/member_form'),'message'=>'Registered Successfully!']);
 
         }// End if
 
@@ -303,14 +303,14 @@ class RegisterController extends Controller
         elseif($input['register'] == 'lawyer')
         {
             session()->put('data', $input);
-            return response()->json(['status'=>'success','redirect'=>'lawyer_form','message'=>'Registered Successfully!']);
+            return response()->json(['status'=>'success','redirect'=>url('/lawyer_form'),'message'=>'Registered Successfully!']);
         }
 
         // If user is LAWFIRM
         else
         {
           session()->put('data', $input);
-            return response()->json(['status'=>'success','redirect'=>'lawfirm_form','message'=>'Registered Successfully!']);
+            return response()->json(['status'=>'success','redirect'=>url('/lawfirm_form'),'message'=>'Registered Successfully!']);
         }
 
       }// else close  

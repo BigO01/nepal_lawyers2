@@ -1436,17 +1436,17 @@ $(document).ready(function () {
             nextTab($active);
 
         });
-        $(".prev-step").click(function (e) {
 
+        $(".prev-step").click(function (e) {
             var $active = $('.wizard .nav-tabs li.active');
             prevTab($active);
-
         });
+
         $.ajaxSetup({
-                            headers: {
+            headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                     }
-                });
+            });
                 // process registration form the form
                     $('#pro').submit(function(event) {
                         event.preventDefault();
@@ -1521,8 +1521,8 @@ $(document).ready(function () {
                                 });
                     });
 
-                    // process registration form the form
-                                        $('#personal_l').submit(function(event) {
+                // process registration form the form
+                    $('#personal_l').submit(function(event) {
                                             event.preventDefault();
                                             $('.has-error').removeClass('has-error');
                                             $('.help-block').html('');
@@ -1558,21 +1558,26 @@ $(document).ready(function () {
                                                     });
                                         });
 
-                    // process registration form the form
-                                        $('#glry').submit(function(event) {
+                // process registration form the form
+                    $('#glry').submit(function(event) {
                                             event.preventDefault();
-                                            var formData = new FormData($(this)[0]);
+//                                            var formData = new FormData($(this)[0]);
                                             $('.has-error').removeClass('has-error');
                                             $('.help-block').html('');
+                                            var form_data = new FormData();
+                                            var file_data = $('#files').prop('files');
+                                            form_data.append('file', file_data);
                                             // process the form
                                                     $.ajax({
                                                         type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
                                                         url         : "{{url('/Gallery')}}", // the url where we want to POST
-                                                        data        : formData,
+                                                        data        : $(this).serialize(),
                                                         dataType    : 'json', // what type of data do we expect back from the server
                                                         processData: false,
-                                                        encode      : true,
-                                    //                    contentType: "application/json",
+//                                                        encode      : true,
+                                                        cache       : false,
+                                                        async       : false,
+                                                        contentType: false,
                                                         success : function(data){
                                                         if(data.status == 'success'){
                                                             toastr.success(data.message, 'Success!');

@@ -9,7 +9,7 @@
 
                 <div class="col-sm-12" id="photos_div">
                   <div class="field" align="left">
-                    <input type="file" class="btn btn-default" id="files" name="photos[]" multiple />
+                    <input type="file" class="btn btn-default" id="files" name="photos[]" multiple/>
                     <input type="hidden" name="file_ids" id="file_ids" value="" />
                   </div>
                   <span class='help-block' id="photos_help"><strong></strong></span>

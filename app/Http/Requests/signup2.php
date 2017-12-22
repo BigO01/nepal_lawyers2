@@ -29,6 +29,7 @@ class signup2 extends FormRequest
             'password_confirmation' => 'required|between:8,30',
             'checkBox'              => 'required',
             'register'              => 'required',
+            'license'              => 'sometimes|unique:nep_lawyers,',
         ];
     }
     

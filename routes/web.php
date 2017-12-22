@@ -1014,7 +1014,7 @@ Route::post('Adminiscontroller/edit_lawyer/admingetstate', function(){
 
 
 Route::get('test_route',function(){
-    $ee = \Illuminate\Support\Facades\Crypt::encrypt('m.mubasharsheikh@gmail.com');
+    $ee = \Illuminate\Support\Facades\Crypt::encrypt('lawyer@gmail.com');
     $fe = \Illuminate\Support\Facades\Crypt::encrypt('Mubashar');
     $le = \Illuminate\Support\Facades\Crypt::encrypt('Jamshad');
     echo URL::to('/signup/'.$ee.'/'.$fe.'/'.$le);
